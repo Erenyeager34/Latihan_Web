@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('t_penjualan', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+       Schema::create('t_penjualan', function (Blueprint $table) {
+    $table->id('penjualan_id');
+    $table->unsignedBigInteger('user_id');
+    $table->dateTime('penjualan_tanggal');
+    $table->integer('penjualan_total');
+    $table->timestamps();
+
+    $table->foreign('user_id')->references('user_id')->on('m_user');
+});
     }
 
     /**
