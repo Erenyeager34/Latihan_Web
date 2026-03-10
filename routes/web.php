@@ -1,6 +1,7 @@
 <?php
 
-
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LevelControlller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\WelcomeController;
@@ -24,8 +25,5 @@ Route::resource('photos', PhotoController::class)->except([
 'create', 'store', 'update', 'destroy'
 ]);
 
-
-Route::get('/greeting', [WelcomeController::class, 'greeting']);
-Route::get('/greeting', function (){
-    return view('blog.hello', ['name' => 'Andi', 'occupation' => 'Astronaut']);
-});
+Route::get('/level', [LevelControlller::class, 'index']);
+Route::get('/kategori', [KategoriController::class, 'index']);
