@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class KategoriController extends Controller
 {
-   public function index(){
+   public function index()
+   {
     $data = [
         'kategori_kode' => 'SNK',
         'kategori_nama' => 'Snack/Makanan Ringan',
@@ -15,11 +16,14 @@ class KategoriController extends Controller
     ];
     DB::table('m_kategori')->insert($data);
     
-    return 'insert data baru berhasil';
+    echo 'insert data baru berhasil <br>';
 
-    $row = DB::table('m_kategori')
-         ->where('kategori_kode', 'SNK')
-         ->update(['kstegori_nama', 'Camilan']);
-         return 'update data berhasil: jumlah data yang diupdate' .$row. 'baris';
+    //$row = DB::table('m_kategori')
+      //   ->where('kategori_kode', 'SNK')
+      //   ->delete();
+      //   return 'delete data berhasil: jumlah data yang dihapus: ' .$row. ' baris';
+
+    $data = DB::table('m_kategori')->get();
+    return view('kategori', ['data' => $data]);
    }
 }
