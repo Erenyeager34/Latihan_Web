@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelControlller;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
-use App\Http\Controllers\WelcomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,4 @@ Route::resource('photos', PhotoController::class)->except([
 
 Route::get('/level', [LevelControlller::class, 'index']);
 Route::get('/kategori', [KategoriController::class, 'index']);
+Route::get('/user', [UserController::class, 'index']);
