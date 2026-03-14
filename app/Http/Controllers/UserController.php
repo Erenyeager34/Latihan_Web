@@ -10,19 +10,19 @@ class UserController extends Controller
 {
    public function index()
    {
-    $data = [
-        'username' => 'customer-1',
-        'nama' => 'Pelanggan',
-        'password' => Hash::make('12345'),
-        'level_id' => 4
-    ];
+    
+    $user = UserModel::firstOrCreate(
+        [
+            'username' => 'manager22'
+            ],
+            [
+            'nama' => 'Manager Dua Dua',
+            'password' => Hash::make ('12345'),
+            'level_id' => 2
+        ]
+    );
 
-    $data = [
-        'nama' => 'pelanggan pertama',
-    ];
-    UserModel::where('username', 'customer-1')->update($data);
+   return view('user', ['data' => $user]);
 
-    $user = UserModel::all();
-    return view('user', ['data' => $user]);
     }
 }
