@@ -7,7 +7,7 @@
         <h1>Form tambah user</h1>
         <form method="post"action="/user/tambah_simpan">
             {{ csrf_field() }}
-            <label>USername</label>
+            <label>Username</label>
             <input type ="text" name ="username" placeholder ="Masukan username">
             <br>
             <label>Nama</label>
@@ -15,6 +15,11 @@
             <br>
             <label>Password</label>
             <input type ="password" nama ="password" placeholder ="masukan password">
-        </table>
+            <br>
+            <label>Level ID</label>
+            <input type ="number" nama ="Level_ID" placeholder="masukan ID level">
+            <br><br>
+            <input type ="submit" class="btn btn-success" value="simpan">
+        </form>
     </body>
 </html>

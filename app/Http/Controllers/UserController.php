@@ -11,18 +11,32 @@ class UserController extends Controller
    public function index()
    {
     
-    $user = UserModel::firstOrCreate(
-        [
-            'username' => 'manager22'
-            ],
-            [
-            'nama' => 'Manager Dua Dua',
-            'password' => Hash::make ('12345'),
-            'level_id' => 2
-        ]
-    );
+    $user = UserModel::all();
 
    return view('user', ['data' => $user]);
 
+    }
+    
+    public function tambah()
+    {
+        return view('user_tambah');
+    }
+
+    public function tambah_simpan(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'nama' => 'required',
+            'password' => 'required',
+            'Level_id' => 'required|numeric'
+        ]);
+        UserModel::create([
+            'username' => $request->username,
+            'nama' => $request->nama,
+            'password' => Hash::make('$request->password'),
+            'Level_id' => $request->level_id
+        ]);
+
+        return redirect('/user')->with('success', 'User berhasil ditambahkan');
     }
 }
