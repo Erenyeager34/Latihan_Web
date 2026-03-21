@@ -33,10 +33,34 @@ class UserController extends Controller
         UserModel::create([
             'username' => $request->username,
             'nama' => $request->nama,
-            'password' => Hash::make('$request->password'),
-            'Level_id' => $request->level_id
+            'password' => Hash::make($request->password),
+            'level_id' => $request->level_id
         ]);
 
         return redirect('/user')->with('success', 'User berhasil ditambahkan');
     }
+
+    public function ubah($id)
+    {
+        $user = UserModel::find($id);
+
+        if (!$user) {
+            return redirect('/user')->with('error', 'User tidak ditemukan');
+        }
+        return view('user_ubah', ['data' => $user]);
+    }
+
+    public function ubah_simpan(Request $request, $id)
+{
+    $user = UserModel::find($id);
+
+    $user->update([
+        'username' => $request->username,
+        'nama' => $request->nama,
+        'password' => Hash::make($request->password),
+        'level_id' => $request->level_id
+    ]);
+
+    return redirect('/user')->with('success', 'Data berhasil diubah');
+}
 }

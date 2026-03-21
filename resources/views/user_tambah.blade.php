@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <title>Data User</title>
+       <title>Form Tambah Data User</title>
     </head>
     <body>
         <h1>Form tambah user</h1>

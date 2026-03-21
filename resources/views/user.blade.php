@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <title>Data User</title>
+       <title>Data Kategori Barang</title>
     </head>
     <body>
-        <h1>Form tambah user</h1>
-        <form method="post"action="/user/tambah_simpan">
-            {{ csrf_field() }}
-            <label>USername</label>
-            <input type ="text" name ="username" placeholder ="Masukan username">
-            <br>
-            <label>Nama</label>
-            <input type ="text" nama ="nama" placeholder ="Masukan nama">
-            <br>
-            <label>Password</label>
-            <input type ="password" nama ="password" placeholder ="masukan password">
+        <h1>Data User dengan Level 2</h1>
+        <table border="1" cellpadding="2" cellspacing="0">
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Nama</th>
+                <th>ID Level Pengguna</th>
+                <th>AKsi</th>
+            </tr>
+            @foreach ($data as $data)
+            <tr>
+                <td>{{ $data->user_id }}</td>
+                <td>{{ $data->username }}</td>
+                <td>{{ $data->nama }}</td>
+                <td>{{ $data->level_id }}</td>
+                <td>
+                    <a href="/user/ubah"{{ $data->user_id }}>ubah</a>
+                    <a href="/user/hapus"{{ $data->user_id }}>hapus</a>
+                </td>
+            @endforeach
         </table>
     </body>
 </html>
